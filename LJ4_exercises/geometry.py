@@ -60,5 +60,3 @@ ax.set_title('Triangle Area: {:.2f}'.format(triangle_area))
 # Show the plot
 plt.show()
 
-# TO BE FIXED:
-# Unexpected area plot, probably axis mismatch between area and triangle
