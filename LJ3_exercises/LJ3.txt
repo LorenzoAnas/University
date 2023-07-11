@@ -1,0 +1,116 @@
+Welcome to the Unit 3 Learning Journal!
+
+1. Copy the countdown function from Section 5.8 of your textbook.
+
+def countdown(n):
+     if n <= 0:
+          print('Blastoff!')
+     else:
+          print(n)
+          countdown(n-1)
+
+Write a new recursive function countup that expects a negative argument and counts “up” from that number. Output from running the function should look something like this:
+
+>>> countup(-3)
+-3
+-2
+-1
+Blastoff!
+
+Write a Python program that gets a number using keyboard input. (Remember to use input for Python 3 but raw_input for Python 2.)
+
+If the number is positive, the program should call countdown. If the number is negative, the program should call countup. Choose for yourself which function to call (countdown or countup) for input of zero.
+
+Provide the following.
+
+The code of your program.
+Respective output for the following inputs: a positive number, a negative number, and zero.
+An explanation of your choice for what to call for input of zero.
+
+
+CODE:
+----------
+def main():
+
+     user_input = int(input("Insert a number and press Enter: "))
+
+     def countup(n):
+          if n == 0:
+              print('Blastoff!')
+          else:
+              print(n)
+              countup(n+1)
+
+     def countdown(n):
+          if n == 0:
+               print('Blastoff!')
+          else:
+               print(n)
+               countdown(n-1)
+
+     if user_input >= 0:
+          countdown(user_input)
+     
+     else:
+          countup(user_input)
+
+
+main()
+----------
+OUTPUT:
+
+----------
+For this exercise I wrote the same recursive function and changed the minus sign to a plus sign, and then added the logic for which function to call depending on the user input.
+I chose to associate zero to countdown for no specific reason, by writing {if user_input >= 0}.
+
+
+
+
+2. Write your own unique Python program that has a runtime error. Do not copy the program from your textbook or the Internet. Provide the following.
+
+The code for your program.
+Output demonstrating the runtime error, including the error message.
+An explanation of the error message.
+An explanation of how to fix the error.
+The code and its output must be explained technically. The explanation can be provided before or after the code, or in the form of comments within the code. For code modification type of questions, always mention or clearly highlight the part which is modified, along with the reason stated, as a code comment. The descriptive part of your response must be at least 200 words.
+
+If you use an informational source, be sure to identify the source and share the link to the source you used.
+
+CODE:
+----------
+user_input = input("""Type "blue" to crash the program: """)
+
+def buggy_function(sky):
+    if sky == "blue":
+        print("The sky is blue")
+        buggy_function(user_input)
+
+    else:
+        print("Avoided crash, goodbye!")
+    
+buggy_function(user_input)
+----------
+OUTPUT:
+
+----------
+
+The previous function is faulty because in case the user input is "blue" the function never escapes the loop in which it calls itself, and never mets the condition to reach the "else:" statement.
+Thanks to extremely clever people, we missed the chance of breaking our computer (yet), since Python recognize by himself when it has had enough of biting its own tail.
+A way to avoid this problem could be adding an hard-coded value ["red"] as an argument to the function once it calls itself back. For example:
+CODE
+----------
+user_input = input("""Type "blue" to crash the program: """)
+
+def buggy_function(sky):
+    if sky == "blue":
+        print("The sky is blue")
+        buggy_function("red")
+
+    else:
+        print("Avoided crash, goodbye!")
+    
+buggy_function(user_input)
+----------
+OUTPUT:
+
+----------
