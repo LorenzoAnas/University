@@ -1,12 +1,17 @@
 import matplotlib.pyplot as plt
 
+# Define a function that takes 3 points as arguments, being p = (x,y,z)
 def calculate_triangle_area(p1, p2, p3):
     # Calculate the vectors between the points
     v1 = (p2[0] - p1[0], p2[1] - p1[1], p2[2] - p1[2])
     v2 = (p3[0] - p1[0], p3[1] - p1[1], p3[2] - p1[2])
 
+    # Check if the vectors chosen are valid
     print(v1,v2)
+
     # Calculate the cross product of the vectors
+    # The cross product of two vectors is the third vector that is perpendicular to the two original vectors
+    # Its magnitude is given by the area of the parallelogram between them and its direction can be determined by the right-hand thumb rule
     cross_product = (
         v1[1] * v2[2] - v1[2] * v2[1],
         v1[2] * v2[0] - v1[0] * v2[2],
@@ -14,9 +19,9 @@ def calculate_triangle_area(p1, p2, p3):
     )
 
     # Calculate the magnitude of the cross product
-    magnitude = (cross_product[0]**2 + cross_product[1]**2 + cross_product[2]**2) ** 0.5
+    magnitude = (cross_product[0]**2 + cross_product[1]**2 + cross_product[2]**2) ** (1/2)
 
-    # Calculate the area of the triangle
+    # Calculate the area of the triangle, being half of the parallelogram formed by the two vectors
     area = 0.5 * magnitude
 
     return area
